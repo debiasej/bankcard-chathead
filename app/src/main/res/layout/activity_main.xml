@@ -10,8 +10,33 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.debiasej.bankcard.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <Button
+            android:id="@+id/startService"
+            android:text="Create Bankcard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".50"
+            android:layout_marginRight="5dp"
+            android:textAllCaps="false"
+            android:theme="@style/AppTheme.Button_Create" />
+
+        <Button
+            android:id="@+id/stopService"
+            android:text="Remove Bankcard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".50"
+            android:layout_marginLeft="5dp"
+            android:textAllCaps="false"
+            android:theme="@style/AppTheme.Button_Remove" />
+
+    </LinearLayout>
 </RelativeLayout>
