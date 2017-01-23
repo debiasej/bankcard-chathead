@@ -12,21 +12,18 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.support.v7.app.NotificationCompat;
 import android.view.WindowManager;
-
+import com.debiasej.bankcard.view.BankcardAnimationTimerTask;
 
 public class BankcardService extends Service {
 
-    private WindowManager windowManager;
     private BankcardServicePresenter presenter;
 
     @Override
     public void onCreate() {
 
-        // Get references to all the views and add them to root view as needed.
-        windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
-
-        BankcardServiceManager serviceManager = new BankcardServiceManagerImpl(windowManager);
-        presenter = new BankcardServicePresenter(serviceManager);
+        BankcardManager bankcardManager = new BankcardServiceManagerImpl(this.getBaseContext());
+        presenter = new BankcardServicePresenter(bankcardManager);
+        presenter.showBankcardWidget();
     }
 
     @Override

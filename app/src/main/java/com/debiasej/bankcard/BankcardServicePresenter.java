@@ -6,10 +6,14 @@ package com.debiasej.bankcard;
 
 public class BankcardServicePresenter {
 
-    private final BankcardServiceManager serviceManager;
+    private final BankcardManager serviceManager;
 
-    public BankcardServicePresenter(BankcardServiceManager serviceManager) {
+    public BankcardServicePresenter(BankcardManager serviceManager) {
         this.serviceManager = serviceManager;
+    }
+
+    public void showBankcardWidget() {
+        serviceManager.initBankcardView();
     }
 
 }
