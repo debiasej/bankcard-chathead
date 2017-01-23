@@ -21,7 +21,7 @@ public class BankcardService extends Service {
     @Override
     public void onCreate() {
 
-        BankcardManager bankcardManager = new BankcardServiceManagerImpl(this.getBaseContext());
+        BankcardManager bankcardManager = new BankcardManagerImpl(this.getBaseContext());
         presenter = new BankcardServicePresenter(bankcardManager);
         presenter.showBankcardWidget();
     }
