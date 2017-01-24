@@ -1,29 +1,27 @@
 package com.debiasej.bankcard.view;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.PixelFormat;
-import android.graphics.drawable.BitmapDrawable;
-import android.media.Image;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.debiasej.bankcard.R;
-import com.debiasej.bankcard.utils.ConversionUtil;
 
-import java.io.InputStream;
+import java.util.Timer;
 
 /**
  * Created by Mario de Biase on 19/1/17.
  */
 
-public class BankCardView extends RelativeLayout {
+public class BankCardView extends View {
 
     private static final int BANK_CARD_HEIGHT = 250; 	// Card's height in dps
     private static final int TAB_WIDTH = 30;            // Tab's width in dps
@@ -46,6 +44,8 @@ public class BankCardView extends RelativeLayout {
         super(context);
         this.context = context;
         init();
+
+
     }
 
     public BankCardView(Context context, AttributeSet attrs, int defStyle) {
@@ -68,7 +68,7 @@ public class BankCardView extends RelativeLayout {
 
         rootLayout = (RelativeLayout) LayoutInflater.from(context).inflate(R.layout.bankcard_view, null);
         contentContainerLayout = (RelativeLayout) rootLayout.findViewById(R.id.content_container);
-        //contentContainerLayout.setOnTouchListener(new TouchListener());
+        contentContainerLayout.setOnTouchListener(new BankcardTouchListener());
 
         rootLayoutParams = new WindowManager.LayoutParams(bankCardWidth + TAB_WIDTH, BANK_CARD_HEIGHT,
                 WindowManager.LayoutParams.TYPE_PHONE,
@@ -79,11 +79,10 @@ public class BankCardView extends RelativeLayout {
 
         windowManager.addView(rootLayout, rootLayoutParams);
 
-        //postDelayed();
-        postDelayedWithoutLogoLayout();
+        createSubviews();
     }
 
-    private void postDelayedWithoutLogoLayout() {
+    private void createSubviews() {
 
         rootLayout.post(new Runnable() {
             @Override
@@ -118,5 +117,29 @@ public class BankCardView extends RelativeLayout {
                 rootLayout.setVisibility(View.VISIBLE);
             }
         });
+    }
+
+
+    private class BankcardTouchListener implements OnTouchListener {
+
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+
+            final int action = event.getActionMasked();
+
+            switch (action) {
+                case MotionEvent.ACTION_DOWN:
+                case MotionEvent.ACTION_MOVE:
+                case MotionEvent.ACTION_UP:
+                case MotionEvent.ACTION_CANCEL:
+                    // Manage the events
+                    Toast.makeText(context, "View touched - onTouchEvent", Toast.LENGTH_SHORT).show();
+                    break;
+                default:
+                    return false;
+            }
+            return true;
+
+        }
     }
 }
