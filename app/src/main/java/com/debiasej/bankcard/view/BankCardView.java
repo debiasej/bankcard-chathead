@@ -19,7 +19,7 @@ import com.debiasej.bankcard.model.BankcardImpl;
  * Created by Mario de Biase on 19/1/17.
  */
 
-public class BankCardView extends View {
+public class BankcardView extends View {
 
     private static final int ANIMATION_FRAME_RATE = 30;	// Animation frame rate per second.
 
@@ -35,18 +35,18 @@ public class BankCardView extends View {
     // Controls for animations
     private BankcardAnimationTimerTask timerTask;
 
-    public BankCardView(Context context) {
+    public BankcardView(Context context) {
         super(context);
         this.context = context;
         init();
     }
 
-    public BankCardView(Context context, AttributeSet attrs, int defStyle) {
+    public BankcardView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         this.context = context;
         init();
     }
-    public BankCardView(Context context, AttributeSet attrs) {
+    public BankcardView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
         init();
