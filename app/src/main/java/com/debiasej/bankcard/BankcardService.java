@@ -11,8 +11,6 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.v7.app.NotificationCompat;
-import android.view.WindowManager;
-import com.debiasej.bankcard.view.BankcardAnimationTimerTask;
 
 public class BankcardService extends Service {
 
