@@ -8,4 +8,5 @@ public interface BankcardManager {
 
     void initBankcardView();
 
+    void removeBankcardView();
 }

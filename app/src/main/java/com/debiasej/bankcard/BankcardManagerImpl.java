@@ -12,14 +12,17 @@ import com.debiasej.bankcard.view.BankCardView;
 public class BankcardManagerImpl implements BankcardManager {
 
     private Context context;
+    private BankCardView bankcardView;
 
     public BankcardManagerImpl(Context context) {
         this.context = context;
     }
 
     public void initBankcardView() {
-
-        BankCardView bankcardView = new BankCardView(context);
+        bankcardView = new BankCardView(context);
     }
 
+    public void removeBankcardView() {
+        bankcardView.removeBankcardView();
+    }
 }

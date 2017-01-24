@@ -12,8 +12,12 @@ public class BankcardServicePresenter {
         this.serviceManager = serviceManager;
     }
 
-    public void showBankcardWidget() {
+    public void createBankcardChathead() {
         serviceManager.initBankcardView();
+    }
+
+    public void destroyBankcardChathead() {
+        serviceManager.removeBankcardView();
     }
 
 }

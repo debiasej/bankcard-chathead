@@ -21,7 +21,7 @@ public class BankcardService extends Service {
 
         BankcardManager bankcardManager = new BankcardManagerImpl(this.getBaseContext());
         presenter = new BankcardServicePresenter(bankcardManager);
-        presenter.showBankcardWidget();
+        presenter.createBankcardChathead();
     }
 
     @Override
@@ -54,6 +54,7 @@ public class BankcardService extends Service {
 
     @Override
     public void onDestroy() {
+        presenter.destroyBankcardChathead();
     }
 
     @Override

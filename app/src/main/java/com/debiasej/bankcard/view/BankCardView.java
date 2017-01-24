@@ -186,4 +186,11 @@ public class BankCardView extends View {
                 bankcard.toggleIsBankcardDisplayed();
         }
     }
+
+    public void removeBankcardView () {
+        if (rootLayout != null) {
+            timerTask.cancel();
+            windowManager.removeView(rootLayout);
+        }
+    }
 }
