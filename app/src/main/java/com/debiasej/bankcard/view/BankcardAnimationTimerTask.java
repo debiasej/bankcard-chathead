@@ -19,7 +19,6 @@ public class BankcardAnimationTimerTask extends TimerTask {
     private Handler animationHandler = new Handler();
     private Timer animationtimer;
 
-    private static final int MOVEMENT_REGION_FRACTION = 6;	// Controls fraction of y-axis on screen within which the bank card stays.
     private static final int ANIMATION_FRAME_RATE = 30;	// Animation frame rate per second.
 
     private Bankcard bankcard;
@@ -38,13 +37,9 @@ public class BankcardAnimationTimerTask extends TimerTask {
             destX = 0;
         }
 
-        // Keep upper edge of the widget within the upper limit of screen
-        destY = Math.max( screenHeight/MOVEMENT_REGION_FRACTION, bankcard.getPosY() );
-
-        // Keep lower edge of the widget within the lower limit of screen
-        destY = Math.min(
-                ((MOVEMENT_REGION_FRACTION-1)*screenHeight)/MOVEMENT_REGION_FRACTION - ( bankcard.bankcardWidth() + bankcard.tabWidth()),
-                destY);
+        // Limit the draggable area
+        destY = bankcard.getPosY() >= 0 ?  bankcard.getPosY() : 0;
+        destY = Math.min( screenHeight - bankcard.bankcardChatheadHeight(), destY);
 
         animationtimer = new Timer();
         animationtimer.schedule(this, 0, ANIMATION_FRAME_RATE);
